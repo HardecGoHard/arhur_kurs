@@ -1,1 +1,0 @@
-# arhur_kurs

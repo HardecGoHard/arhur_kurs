@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Книга</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link th:href="@{../../default.css}" rel="stylesheet">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<div class="wrapper">
+        <form th:object="${book}" th:method="post" th:action="@{/books/save}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="input-group mb-3">
+            <label for="book-name"><b>Название книги</b></label>
+            <input class="input-group-text" type="text" th:field="*{title}" id="book-name">
+            <div>
+                <small class="validation-error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Поле
+                    название книги должно быть заполнено</small>
+            </div>
+            </div>
+
+            <div class="input-group mb-3">
+            <label for="author-book"><b>Автор книги </b></label>
+            <input class="input-group-text" type="text" th:field="*{author}" id="author-book">
+            <div class="required">
+                <small class="validation-error" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Поле
+                    автора книги должен быть заполнен</small>
+            </div>
+            </div>
+
+            <div class="input-group mb-3">
+            <label for="book-year"><b>Год книги </b></label>
+            <input class="input-group-text" type="text" th:field="*{year}" id="book-year">
+            <div class="required">
+                <small class="validation-error" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Поле
+                    года книги должен быть заполнен</small>
+            </div>
+            </div>
+
+            <div class="input-group mb-3 ">
+            <label class="check-label" for="book-pub-house"><b>Издательство</b></label>
+            <input class="input-group-text" type="text" th:field="*{publishHouse}" id="book-pub-house">
+            <div class="required">
+                <small class="validation-error" th:if="${#fields.hasErrors('publishHouse')}" th:errors="*{publishHouse}">Поле
+                   издательства книги должен быть заполнен</small>
+            </div>
+            </div>
+
+            <div class="input-group mb-3 " >
+            <label class="check-label" for="desc"><b>Описание</b></label>
+            <input class="input-group-text" type="text" th:field="*{description}" id="desc">
+
+            </div>
+
+            <button type="submit" class="btn btn-success form-button">Сохранить</button>
+            <hr>
+        </form>
+</div>
+</body>
+</html>
