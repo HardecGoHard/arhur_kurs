@@ -21,6 +21,8 @@
             <td>Автор</td>
             <td>Год выпуска</td>
             <td>Издательский дом</td>
+            <td>Удалить</td>
+
         </tr>
 
         <tr th:each="book : ${books}">
@@ -28,6 +30,7 @@
             <td th:text="${book.author}"></td>
             <td th:text="${book.year}"></td>
             <td th:text="${book.publishHouse}"></td>
+            <td><a th:href="@{/books/{id}/delete(id = ${book.id})}"> Удалить</a></td>
         </tr>
     </table>
 </div>

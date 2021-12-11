@@ -43,6 +43,12 @@ public class LibraryController {
         return modelAndView;
     }
 
+    @GetMapping("/{id}/delete")
+    public String deleteBookForm(@PathVariable("id") Long id){
+        bookService.deleteById(id);
+        return "redirect:/books";
+    }
+
     @PostMapping("/save")
     public String submitCourseForm(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
